@@ -1,0 +1,13 @@
+{
+  "name": "brickhouse-board",
+  "version": "0.1.0",
+  "dependencies": {
+    "johnny-five": "^0.8.58",
+    "joi": "^6.2.0",
+    "lodash.assign": "^3.1.0",
+    "lodash.create": "^3.1.0",
+    "lodash.indexby": "^3.1.0",
+    "lodash.map": "^3.1.1",
+    "lodash.uniqueid": "^3.0.0"
+  }
+}
