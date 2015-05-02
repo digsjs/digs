@@ -1,13 +1,14 @@
 {
   "env": {
-    "node": true
+    "node": true,
+    "es6": true
   },
   "rules": {
-    "brace-style": [2],
+    "brace-style": [0],
     "comma-style": [2, "last"],
     "consistent-this": [2, "self"],
     "consistent-return": [0],
-    "func-style": [2, "expression"],
+    "func-style": [2, "declaration"],
     "max-len": [2, 80, 4],
     "max-params": [1, 4],
     "no-shadow": [0],
