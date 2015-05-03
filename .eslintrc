@@ -29,7 +29,9 @@
     "space-after-keywords": [2, "always"],
     "space-before-blocks": [2, "always"],
     "spaced-line-comment": [2, "always"],
-    "valid-jsdoc": [1],
+    "valid-jsdoc": [1, {
+      "requireReturn": false
+    }],
     "vars-on-top": [2],
     "wrap-iife": [2]
   },
