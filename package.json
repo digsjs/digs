@@ -2,13 +2,19 @@
   "name": "brickhouse-board",
   "version": "0.1.0",
   "dependencies": {
+    "bluebird": "^2.9.25",
     "boom": "^2.7.1",
     "johnny-five": "^0.8.58",
     "joi": "^6.2.0",
-    "lodash": "^3.7.0"
+    "lodash": "^3.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brickhousejs/brickhouse-board.git"
   },
   "devDependencies": {
     "chai": "^2.3.0",
+    "get-port": "^1.0.0",
     "grunt": "^0.4.5",
     "grunt-bump": "^0.3.1",
     "grunt-cli": "^0.1.13",

@@ -5,6 +5,7 @@
   },
   "rules": {
     "brace-style": [0],
+    "camelcase": [0],
     "comma-style": [2, "last"],
     "consistent-this": [2, "self"],
     "consistent-return": [0],

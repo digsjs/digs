@@ -4,25 +4,30 @@
 'use strict';
 
 var Hapi = require('hapi'),
+  getPort = require('get-port'),
+  Promise = require('bluebird'),
   pkg = require('../../package.json'),
   Board = require('../../lib/model'),
   routes = require('../../lib/routes');
 
-var PORT = 10102,
-  Server = Hapi.Server;
+getPort = Promise.promisify(getPort);
 
 describe('routes', function () {
 
   var server;
 
   before(function () {
-    server = new Server();
-    server.connection({port: PORT});
-    server.route(routes);
+    server = new Hapi.Server();
+    Promise.promisifyAll(server);
+    return getPort()
+      .then(function (port) {
+        server.connection({port: port});
+        return server.route(routes);
+      });
   });
 
   after(function () {
-    server.stop({timeout: 0});
+    return server.stop({timeout: 0});
   });
 
   afterEach(function () {
