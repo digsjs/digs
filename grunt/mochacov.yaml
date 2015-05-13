@@ -1,11 +1,6 @@
 options:
   reporter: spec
+  require: ./test/fixture
 
-unit:
-  src: ./test/unit/**/*.spec.js
-  options:
-    require: ./test/unit/fixture
-e2e:
-  src: ./test/e2e/**/*.spec.js
-  options:
-    require: ./test/e2e/fixture
+unit: ./test/unit/**/*.spec.js
+e2e: ./test/e2e/**/*.spec.js

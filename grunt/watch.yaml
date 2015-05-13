@@ -1,0 +1,6 @@
+lib:
+  files:
+    - lib/**/*.js
+    - test/unit/lib/**/*.js
+  tasks:
+    - test:lib

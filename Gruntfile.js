@@ -14,7 +14,8 @@ module.exports = function (grunt) {
         devUpdate: 'grunt-dev-update',
         'bump-only': 'grunt-bump',
         'bump-commit': 'grunt-bump',
-        mochacov: 'grunt-mocha-cov'
+        mochacov: 'grunt-mocha-cov',
+        _watch: 'grunt-contrib-watch'
       }
     },
     data: {
