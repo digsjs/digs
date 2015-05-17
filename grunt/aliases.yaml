@@ -1,0 +1,3 @@
+test:
+  - mochacov:unit
+  - mochacov:e2e

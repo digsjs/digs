@@ -18,6 +18,7 @@
     "no-else-return": [2],
     "no-floating-decimal": [2],
     "no-multiple-empty-lines": [2, {"max": 2}],
+    "no-new": [0],
     "no-nested-ternary": [2],
     "no-reserved-keys": [2],
     "no-return-assign": [0],

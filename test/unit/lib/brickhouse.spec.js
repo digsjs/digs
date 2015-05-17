@@ -1,6 +1,8 @@
 'use strict';
 
-let Brickhouse = require('../../../lib/brickhouse'),
+let Brickhouse = require('../../../lib/models/brickhouse'),
+  BHEmitter = require('../../../lib/models/bhemitter'),
+  config = require('../../../lib/config'),
   Hapi = require('hapi'),
   _ = require('lodash'),
   sinon = require('sinon');
@@ -11,6 +13,7 @@ describe('Brickhouse', function () {
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create('Brickhouse');
+    sandbox.stub(config.configure).andReturn({});
   });
 
   afterEach(function () {
@@ -18,18 +21,9 @@ describe('Brickhouse', function () {
   });
 
   describe('constructor', function () {
-    it('should throw if not passed a Hapi.Server instance', function () {
-      expect(function () {
-        /* eslint no-new:0 */
-        new Brickhouse();
-      }).to.throw('Invalid parameters');
-    });
-
-    it('should be an EventEmitter instance', function () {
-      let events = require('events');
-
+    it('should be an BHEmitter instance', function () {
       expect(new Brickhouse(new Hapi.Server()) instanceof
-        events.EventEmitter).to.be.true;
+        BHEmitter).to.be.true;
     });
 
     it('should call Brickhouse#createBoard for each k/v pair in opts object',

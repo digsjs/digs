@@ -1,23 +1,32 @@
 {
-  "name": "brickhouse-board",
+  "name": "brickhouse",
   "version": "0.1.0",
   "dependencies": {
     "bluebird": "^2.9.25",
     "boom": "^2.7.1",
+    "debug": "^2.2.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "ini": "^1.3.3",
     "johnny-five": "^0.8.58",
     "joi": "^6.2.0",
-    "lodash": "^3.8.0"
+    "js-yaml": "^3.3.0",
+    "lodash": "^3.8.0",
+    "rc": "^1.0.1",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/brickhousejs/brickhouse-board.git"
+    "url": "https://github.com/brickhousejs/brickhouse.git"
   },
   "devDependencies": {
+    "board-io": "^3.0.4",
     "chai": "^2.3.0",
     "get-port": "^1.0.0",
     "grunt": "^0.4.5",
     "grunt-bump": "^0.3.1",
     "grunt-cli": "^0.1.13",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-dev-update": "^1.1.0",
     "grunt-eslint": "^12.0.0",
     "grunt-mocha-cov": "^0.4.0",
