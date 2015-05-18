@@ -2,7 +2,6 @@
 
 let Brickhouse = require('../../../lib/models/brickhouse'),
   BHEmitter = require('../../../lib/models/bhemitter'),
-  config = require('../../../lib/config'),
   Hapi = require('hapi'),
   _ = require('lodash'),
   sinon = require('sinon');
@@ -13,7 +12,6 @@ describe('Brickhouse', function () {
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create('Brickhouse');
-    sandbox.stub(config.configure).andReturn({});
   });
 
   afterEach(function () {
@@ -34,45 +32,22 @@ describe('Brickhouse', function () {
         expect(createBoard).not.to.have.been.called;
 
         new Brickhouse(new Hapi.Server(), {
-          id: 'foo'
+          foo: {}
         });
         expect(createBoard).to.have.been.calledOnce;
       });
 
     it('should set Brickhouse#boards, indexed by id', function () {
-      let board = {
-          id: 'foo'
+      let opts = {
+          foo: {}
         },
         boards;
 
       sandbox.stub(Brickhouse.prototype, 'createBoard');
-      boards = new Brickhouse(new Hapi.Server(), board).boards;
+      boards = new Brickhouse(new Hapi.Server(), opts).boards;
 
       expect(_.size(boards)).to.equal(1);
       expect(boards.foo).to.be.board;
-    });
-  });
-
-  describe('log', function () {
-
-    var bh, logStub, args;
-
-    beforeEach(function () {
-      var server = new Hapi.Server();
-      logStub = sandbox.stub(server, 'log');
-      bh = new Brickhouse(server);
-      args = ['foo', 'bar', 'baz'];
-    });
-
-    it('should call Hapi.Server#log', function () {
-      bh.log.apply(bh, args);
-      expect(logStub).to.have.been.called;
-    });
-
-    it('should prepend Brickhouse.NAME to the tags', function () {
-      bh.log.apply(bh, args);
-      expect(logStub).to.have.been.calledWith([Brickhouse.NAME]
-        .concat(args[0]));
     });
   });
 

@@ -3,18 +3,18 @@
 
 'use strict';
 
-var Hapi = require('hapi'),
+let Hapi = require('hapi'),
   getPort = require('get-port'),
   Promise = require('bluebird'),
   pkg = require('../../package.json'),
-  Board = require('../../lib/model'),
+  Board = require('../../lib/models/board'),
   routes = require('../../lib/routes');
 
 getPort = Promise.promisify(getPort);
 
 describe('routes', function () {
 
-  var server;
+  let server;
 
   before(function () {
     server = new Hapi.Server();
@@ -36,7 +36,7 @@ describe('routes', function () {
 
   describe('boards', function () {
     it('should list no boards if none configured', function (done) {
-      var options = {
+      let options = {
         method: 'GET',
         url: '/boards'
       };
@@ -53,13 +53,13 @@ describe('routes', function () {
     });
 
     it('should list a board if one is configured', function (done) {
-      var options = {
+      let options = {
         method: 'GET',
         url: '/boards'
       };
 
       server.plugins[pkg.name] = {
-        boards: [new Board({id: 'slime', port: '/dev/derp'})]
+        boards: [new Board(server, {id: 'slime', port: '/dev/derp'})]
       };
 
       server.inject(options, function (response) {
