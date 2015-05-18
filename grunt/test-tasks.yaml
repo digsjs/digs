@@ -1,0 +1,28 @@
+---
+watch:
+  options:
+    reload: true
+  files:
+    - eg/**/*.js
+    - bin/**/*.js
+    - lib/**/*.js
+    - test/**/*.js
+    - grunt/**/*.js
+    - grunt/**/*.yaml
+    - Gruntfile.js
+    - index.js
+  tasks:
+    - test
+
+mochacov:
+  - test/**/*.spec.js
+
+eslint:
+  - eg/**/*.js
+  - bin/**/*.js
+  - lib/**/*.js
+  - test/**/*.js
+  - grunt/**/*.js
+  - Gruntfile.js
+  - index.js
+

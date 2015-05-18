@@ -29,7 +29,7 @@
     "radix": [2],
     "space-after-keywords": [2, "always"],
     "space-before-blocks": [2, "always"],
-    "spaced-line-comment": [2, "always"],
+    "spaced-line-comment": [0],
     "valid-jsdoc": [1, {
       "requireReturn": false
     }],

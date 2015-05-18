@@ -1,6 +1,4 @@
+---
 options:
   reporter: spec
-  require: ./test/fixture
-
-unit: ./test/unit/**/*.spec.js
-e2e: ./test/e2e/**/*.spec.js
+  require: test/fixture

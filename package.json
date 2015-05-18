@@ -11,9 +11,11 @@
     "joi": "^6.2.0",
     "js-yaml": "^3.3.0",
     "lodash": "^3.8.0",
+    "pipe-event": "^0.1.0",
     "rc": "^1.0.1",
     "sinon": "^1.14.1",
-    "sinon-chai": "^2.7.0"
+    "sinon-chai": "^2.7.0",
+    "strip-ansi": "^2.0.1"
   },
   "repository": {
     "type": "git",
