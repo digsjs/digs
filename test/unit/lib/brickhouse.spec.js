@@ -47,7 +47,7 @@ describe('Brickhouse', function () {
       boards = new Brickhouse(new Hapi.Server(), opts).boards;
 
       expect(_.size(boards)).to.equal(1);
-      expect(boards.foo).to.be.board;
+      expect(boards.foo).to.be._worker;
     });
   });
 
