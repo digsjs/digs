@@ -3,7 +3,6 @@ watch:
   options:
     reload: true
   files:
-    - eg/**/*.js
     - bin/**/*.js
     - lib/**/*.js
     - test/**/*.js
@@ -18,7 +17,6 @@ mochacov:
   - test/**/*.spec.js
 
 eslint:
-  - eg/**/*.js
   - bin/**/*.js
   - lib/**/*.js
   - test/**/*.js

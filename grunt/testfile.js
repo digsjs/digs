@@ -57,7 +57,7 @@ module.exports = function (grunt) {
         config = configure(target);
         grunt.config.merge(config);
 
-        grunt.log.ok('Watching: %s', config.watch[target].files.join(', '));
+        grunt.onLog.ok('Watching: %s', config.watch[target].files.join(', '));
         grunt.task.run('watch:' + target);
       });
     });
@@ -86,9 +86,9 @@ module.exports = function (grunt) {
       config = configure(target);
       grunt.config.merge(config);
 
-      grunt.log.ok('Linting: %s', config.eslint[target].join(', '));
+      grunt.onLog.ok('Linting: %s', config.eslint[target].join(', '));
       grunt.task.run('eslint:' + target);
-      grunt.log.ok('Testing: %s', config.mochacov[target]);
+      grunt.onLog.ok('Testing: %s', config.mochacov[target]);
       grunt.task.run('mochacov:' + target);
     });
 
