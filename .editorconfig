@@ -11,6 +11,7 @@ continuation_indent = 4
 
 [*.md]
 trim_trailing_whitespace = false
+indent_size = 4
 
 [Makefile*]
 indent_style = tab
