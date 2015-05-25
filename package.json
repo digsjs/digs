@@ -5,11 +5,18 @@
     "bluebird": "^2.9.25",
     "boom": "^2.7.1",
     "debug": "^2.2.0",
-    "johnny-five": "^0.8.58",
+    "get-port": "^1.0.0",
+    "johnny-five": "^0.8.76",
     "joi": "^6.2.0",
     "lodash": "^3.8.0",
+    "mqtt": "^1.2.0",
     "pipe-event": "^0.1.0",
+    "slug": "^0.9.1",
     "strip-ansi": "^2.0.1"
+  },
+  "author": {
+    "name": "Christopher Hiller",
+    "email": "boneskull@boneskull.com"
   },
   "repository": {
     "type": "git",
@@ -24,7 +31,7 @@
     "grunt-cli": "^0.1.13",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-dev-update": "^1.1.0",
-    "grunt-eslint": "^12.0.0",
+    "grunt-eslint": "^13.0.0",
     "grunt-mocha-cov": "^0.4.0",
     "hapi": "^8.4.0",
     "ink-docstrap": "^0.5.2",
@@ -33,7 +40,11 @@
     "mocha": "^2.2.5",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0",
-    "time-grunt": "^1.1.1"
+    "time-grunt": "^1.2.1"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=2.0.1"
+  }
 }
