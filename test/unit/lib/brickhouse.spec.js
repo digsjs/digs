@@ -1,7 +1,7 @@
 'use strict';
 
-let Brickhouse = require('../../../lib/models/brickhouse'),
-  BHEmitter = require('../../../lib/models/bhemitter'),
+let Brickhouse = require('../../../lib/brickhouse'),
+  BHEmitter = require('../../../lib/common/bhemitter'),
   Hapi = require('hapi'),
   _ = require('lodash'),
   sinon = require('sinon');
@@ -47,7 +47,7 @@ describe('Brickhouse', function () {
       boards = new Brickhouse(new Hapi.Server(), opts).boards;
 
       expect(_.size(boards)).to.equal(1);
-      expect(boards.foo).to.be._worker;
+      expect(boards.foo).to.be._board;
     });
   });
 
