@@ -30,6 +30,7 @@ If this sounds good to you, I'm hoping you can lend a hand.  *I am but a man.*  
     - `GET` board and component information
     - Execute any public method of a component via `POST` request
 - HTTP server controls components via MQTT  
+- [Demo app](https://www.npmjs.com/package/digs-example)
 
 ## Roadmap
 
