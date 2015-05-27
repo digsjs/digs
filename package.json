@@ -1,6 +1,6 @@
 {
   "name": "digs",
-  "version": "0.1.0",
+  "version": "0.2.0-0",
   "dependencies": {
     "bluebird": "^2.9.25",
     "debug": "^2.2.0",
