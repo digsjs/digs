@@ -36,7 +36,7 @@ If this sounds good to you, I'm hoping you can lend a hand.  *I am but a man.*  
 
 *Roughly* in order of importance.
 
-- [ ] Make issues for this crap.
+- [x] Make issues for this crap.
 - [x] Breakout routing and Hapi plugin into own module
 - [ ] Plugin API
     - [ ] Think about entry points into core API
