@@ -1,7 +1,7 @@
 'use strict';
 
 let Digs = require('../../../lib/digs'),
-  BHEmitter = require('../../../lib/common/digs-emitter'),
+  BHEmitter = require('../../../lib/common/log-emitter'),
   Hapi = require('hapi'),
   _ = require('lodash'),
   sinon = require('sinon');
