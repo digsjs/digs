@@ -2,6 +2,7 @@
   "name": "digs",
   "version": "0.2.0-0",
   "dependencies": {
+    "JSONStream": "^1.0.4",
     "bluebird": "^2.9.25",
     "debug": "^2.2.0",
     "johnny-five": "^0.8.76",
@@ -9,12 +10,19 @@
     "lodash": "^3.8.0",
     "mqtt": "^1.2.0",
     "pipe-event": "^0.1.0",
+    "progress": "^1.1.8",
+    "serialport": "^1.7.4",
     "slug": "^0.9.1",
-    "strip-ansi": "^2.0.1"
+    "split": "^1.0.0",
+    "strip-ansi": "^2.0.1",
+    "through2": "^0.6.5"
   },
   "author": {
     "name": "Christopher Hiller",
     "email": "boneskull@boneskull.com"
+  },
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
   },
   "repository": {
     "type": "git",
