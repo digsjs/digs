@@ -5,6 +5,7 @@
     "JSONStream": "^1.0.4",
     "bluebird": "^2.9.25",
     "debug": "^2.2.0",
+    "digs-broker": "^0.1.1",
     "johnny-five": "^0.8.76",
     "joi": "^6.2.0",
     "lodash": "^3.8.0",
