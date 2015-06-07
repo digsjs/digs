@@ -1,6 +1,6 @@
 # digs
 
-*A home automation server written in JavaScript*
+A home automation server written in JavaScript
 
 [![NPM](https://nodei.co/npm/digs.png?compact=true)](https://www.npmjs.com/package/digs)
 
@@ -44,17 +44,9 @@ What you probably want to do is grab the [demo app](https://www.npmjs.com/packag
 
 Otherwise: `npm install digs`.
 
-## For Contributors
+## Contributing
 
-If you just want to hack on it, clone one or more of the projects listed below, then `npm install`.  
-
-Best places to start are those [issues labeled with `help wanted`](https://github.com/digsjs/digs/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22).
-
-### Using `npm link`
-
-I find myself usually having all of the projects open at once, and making use of `npm link` to ensure my changes to a dependency appear in its dependent(s).
-
-For example, if I want to have my modifications to **digs-common** show up in my **digs** working copy, I'd go into my **digs-common** working copy, then execute `npm link`.  Then, I'd go back to my **digs** working copy, and execute `npm link digs-common`.  
+See [CONTRIBUTING.md](https://github.com/digsjs/digs/blob/master/CONTRIBUTING.md).
 
 ## Project Organization
 
@@ -64,6 +56,7 @@ For example, if I want to have my modifications to **digs-common** show up in my
 - [**digs-client**](https://github.com/digsjs/digs-client):  An MQTT client.  Used by **digs** to communicate with networked *and* local devices.
 - [**digs-broker**](https://github.com/digsjs/digs-broker):  A barebones MQTT broker, to be used as a fallback or for testing before committing yourself to an [*actual* broker](https://www.npmjs.com/package/mosca).
 - [**digs-common**](https://github.com/digsjs/digs-common):  Common utilities shared between most of the other projects.
+- [**digs-dev**](https://github.com/digsjs/digs-dev): Common development dependencies for the other projects.
 - [**hapi-digs**](https://github.com/digsjs/hapi-digs):  A [Hapi](http://hapijs.com) plugin to communicate with **digs** over HTTP.  Currently just a RESTful API; no frontend;
 - [**hapi-digs-example**](https://github.com/digsjs/hapi-digs-example):  A working example/demo of **hapi-digs**.
 
@@ -96,7 +89,7 @@ For example, if I want to have my modifications to **digs-common** show up in my
 
 ## Author
 
-[Christopher Hiller](http://boneskull.com)
+[Christopher Hiller](http://boneskull.com) ([boneskull](https://github.com/boneskull))
 
 ## License
 
