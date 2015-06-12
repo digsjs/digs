@@ -35,5 +35,8 @@
   "license": "MIT",
   "engines": {
     "node": ">=2.0.1"
+  },
+  "scripts": {
+    "prepublish": "node node_modules/digs-dev . && grunt usb"
   }
 }
