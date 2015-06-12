@@ -1,3 +1,5 @@
 test:
   - eslint:test
   - mochacov:test
+usb:
+  - usbIds
