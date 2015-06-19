@@ -1,6 +1,6 @@
 {
   "name": "digs",
-  "version": "0.2.0-1",
+  "version": "0.2.0-2",
   "dependencies": {
     "JSONStream": "^1.0.4",
     "bluebird": "^2.9.25",
