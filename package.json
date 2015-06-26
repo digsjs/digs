@@ -12,6 +12,16 @@
     "joi": "^6.2.0",
     "lodash": "^3.9.3"
   },
+  "keywords": [
+    "home",
+    "automation",
+    "server",
+    "mqtt",
+    "johnny-five",
+    "arduino",
+    "serial",
+    "iot"
+  ],
   "author": {
     "name": "Christopher Hiller",
     "email": "boneskull@boneskull.com"
