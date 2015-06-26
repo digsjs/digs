@@ -1,30 +1,30 @@
 'use strict';
 
-let Promise = require('bluebird'),
-  FSUtils = require('../../../lib/fsutils'),
-  path = require('path'),
-  pkg = require('../../../package.json');
+let Promise = require('bluebird');
+let FSUtils = require('../../../lib/fsutils');
+let path = require('path');
+let pkg = require('../../../package.json');
 
 describe('Plugins', function () {
 
   const parentPkg = {
-      dependencies: {
-        foo: '1.0.0',
-        bar: '0.1.0',
-        baz: '9.9.9'
-      }
-    },
-    fooPkg = {
-      name: 'foo',
-      keywords: [`${pkg.name}-plugin`]
-    },
-    barPkg = {
-      name: 'bar'
-    },
-    bazPkg = {
-      name: 'baz',
-      keywords: [`${pkg.name}plugin`]
-    };
+    dependencies: {
+      foo: '1.0.0',
+      bar: '0.1.0',
+      baz: '9.9.9'
+    }
+  };
+  const fooPkg = {
+    name: 'foo',
+    keywords: [`${pkg.name}-plugin`]
+  };
+  const barPkg = {
+    name: 'bar'
+  };
+  const bazPkg = {
+    name: 'baz',
+    keywords: [`${pkg.name}plugin`]
+  };
 
   let sandbox;
 
@@ -36,16 +36,16 @@ describe('Plugins', function () {
     sandbox.restore();
   });
 
-  describe('findPlugins', function () {
+  describe('discoverPlugins', function () {
 
-    let Plugins,
-      PARENT_DIR = path.join('some', 'path'),
-      NODE_MODULES = 'node_modules',
-      PACKAGE_JSON = 'package.json';
+    let Plugins;
+    let PARENT_DIR = path.join('some', 'path');
+    let NODE_MODULES = 'node_modules';
+    let PACKAGE_JSON = 'package.json';
 
     beforeEach(function () {
       sandbox.stub(FSUtils, 'findup')
-        .returns(Promise.resolve(path.join(PARENT_DIR, PACKAGE_JSON)));
+        .returns(Promise.resolve(PARENT_DIR));
 
       sandbox.stub(FSUtils.fs, 'readFileAsync')
         .withArgs(path.join(PARENT_DIR, PACKAGE_JSON))
@@ -64,13 +64,13 @@ describe('Plugins', function () {
       expect(Plugins.discoverPlugins).to.be.a('function');
     });
 
-    it('should return a mapping of plugins to their main modules', function () {
+    it('should return a list of plugin paths', function () {
       return Plugins.discoverPlugins()
         .then(function (result) {
-          expect(result).to.eql({
-            baz: path.join(PARENT_DIR, NODE_MODULES, 'baz'),
-            foo: path.join(PARENT_DIR, NODE_MODULES, 'foo')
-          });
+          expect(result).to.eql([
+            path.join(PARENT_DIR, NODE_MODULES, 'foo'),
+            path.join(PARENT_DIR, NODE_MODULES, 'baz')
+          ]);
         });
     });
 
