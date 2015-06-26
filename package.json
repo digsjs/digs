@@ -2,7 +2,6 @@
   "name": "digs",
   "version": "0.2.0-3",
   "dependencies": {
-    "JSONStream": "^1.0.4",
     "bluebird": "^2.9.25",
     "debug": "^2.2.0",
     "dependency-graph": "^0.2.0",
@@ -10,14 +9,8 @@
     "digs-client": "^0.1.0",
     "digs-common": "^0.2.0",
     "findup": "^0.1.5",
-    "johnny-five": "^0.8.76",
     "joi": "^6.2.0",
-    "lodash": "^3.9.3",
-    "mqtt": "^1.2.0",
-    "progress": "^1.1.8",
-    "split": "^1.0.0",
-    "strip-ansi": "^2.0.1",
-    "through2": "^0.6.5"
+    "lodash": "^3.9.3"
   },
   "author": {
     "name": "Christopher Hiller",
@@ -37,6 +30,6 @@
     "node": ">=2.0.1"
   },
   "scripts": {
-    "prepublish": "node node_modules/digs-dev . && grunt usb"
+    "prepublish": "node node_modules/digs-dev ."
   }
 }
