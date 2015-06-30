@@ -1,3 +1,3 @@
 test:
   - eslint:test
-  - mochacov:test
+  - mochaTest:test

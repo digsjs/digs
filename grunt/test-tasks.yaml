@@ -13,14 +13,13 @@ watch:
   tasks:
     - test
 
-mochacov:
-  - test/**/*.spec.js
+mochaTest:
+  src: test/**/*.spec.js
 
 eslint:
-  - bin/**/*.js
-  - lib/**/*.js
-  - test/**/*.js
-  - grunt/**/*.js
-  - Gruntfile.js
-  - index.js
+  - <%= watch.test.files %>
+  - '!**/*.yaml'
+  - '!Gruntfile.js'
+  - '!grunt/testfile.js'
+  - '!test/fixture.js'
 

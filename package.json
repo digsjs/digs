@@ -40,6 +40,7 @@
     "node": ">=2.0.1"
   },
   "scripts": {
-    "prepublish": "node node_modules/digs-dev ."
+    "prepublish": "node node_modules/digs-dev .",
+    "test": "grunt test"
   }
 }
