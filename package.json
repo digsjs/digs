@@ -32,7 +32,7 @@
     "url": "https://github.com/digsjs/digs.git"
   },
   "devDependencies": {
-    "digs-dev": "^0.1.5"
+    "digs-dev": "^0.1.7"
   },
   "main": "index.js",
   "license": "MIT",
