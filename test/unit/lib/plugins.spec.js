@@ -74,12 +74,5 @@ describe('Plugins', function () {
         });
     });
 
-    it('should accept a current working directory parameter', function () {
-      return Plugins.discoverPlugins(PARENT_DIR)
-        .then(function () {
-          expect(FSUtils.findup).to.have.been.calledWith(PARENT_DIR);
-        });
-    });
-
   });
 });
