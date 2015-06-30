@@ -14,21 +14,11 @@ describe('plugin autodetection', function () {
     sandbox.restore();
   });
 
-  it('should autodetect internal plugins', function () {
-    let digs = new Digs();
-    return digs._autoDetected.then(function () {
-      expect(digs._registeredPlugins.digsBroker.func)
-        .to.equal(require('digs-broker'));
+  it.skip('should autodetect external plugins', function () {
+    let d = new Digs({ autoDetectPlugins: true });
+    return d.start().then(function () {
+      expect(d._unloadedPlugins['digs-mqtt-broker'].func)
+        .to.equal(require('digs-mqtt-broker'));
     });
   });
-
-  it('should load internal plugins', function () {
-    let digs = new Digs();
-    return digs.start()
-      .then(function () {
-        expect(digs.digsBroker).to.be
-          .instanceOf(require('digs-broker').DigsBroker);
-      });
-  });
-
 });
