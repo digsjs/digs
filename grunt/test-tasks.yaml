@@ -13,8 +13,8 @@ watch:
   tasks:
     - test
 
-mochaTest:
-  src: test/**/*.spec.js
+mocha_istanbul:
+  src: test
 
 eslint:
   - <%= watch.test.files %>
