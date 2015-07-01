@@ -2,7 +2,7 @@
   "name": "digs",
   "version": "0.2.0-3",
   "dependencies": {
-    "bluebird": "^2.9.25",
+    "bluebird": "^2.9.30",
     "debug": "^2.2.0",
     "dependency-graph": "^0.2.0",
     "digs-client": "^0.1.0",
