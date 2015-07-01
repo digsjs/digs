@@ -1,9 +1,12 @@
 language: node_js
 node_js:
-  - iojs
+- iojs
 sudo: false
 env:
   global:
   - secure: CEL0O+VzeaDdAsxkmA09mzrCz1c7KNVob2H28tJO1/K7MPKad/50lBqf+rOEOpM5/JbObLGcRGDWuACzyxYLViGt8fOgSzeUdpHunSggwBxt6rteeWUWZJEWJdZUTzHR+UlZ6OvZapHm+nXqW9+QI0EleFJZgU+Q882odZnxq6QSp31Uhouu26H+AaxN7Rzd9HJS7ywkBro50euz56WgK4XzGyHWh4y6D2zETP/m1OKjoGLYqHte53TgSJXk8+jbMVkGGl3QuEb1yV8Xr8YzIwqbYOZ9WPLu7QDhTLTDVzVAMX5eRN+XIXBTDDsHKlduuu0wUhduc1a0rEyyh+Od2eo2o72Xd51o1VbiH4dF6A2C6AuN58wk4KGScGnvidv+GeNdovdfpKl+/lA59EgPiKwkESrsRru+AvObDotV+of2fdqEx+lnOrLAHyXNSsexCaWnz3Xhuj1kxu9LK6ICv3zzoVRdQTuMteH0vbQ3GZWajehmt2c5yCSUciDYkyayzUG2EyeZzovydLOuSbyJGr2K7zxOWTytCIaoKa+BX4c2vUIi4yrPpTeo9fMwG5K5dLJICIQcWlkAJliQ8465nWNqzGIL8HpUvJZCKNL8dpo+vZ5zmxRFmI+J0IbzcK6xAbjSLtDzMjk5M+7cZLcK1YAqmtAtFoZ1qNGwUUnZSfw=
+  - secure: khB+PsskX8ZaK1yKdYLoNFwKAUgt6cCQvNR6510aMP2RTfw2iXmtzNNoPhxNeCaapJqAnkt/Ex/K7iNJH8fV5G9SFlYQa/eISzXJg3sLtdqRIMDfVTiw/drPP93xZAPD+1ylVIKD4ZoaMwlRKphidk1hkP2CU5wqmvs+JVqcn+xsWHs6dkj7e9jvi49j8M1+RiBcZaGj1xiMlidqD2koStOFw7w9yld5e1A/g96xxBxzyTZl7s3Ki49hY8bjxWrabwBbYENdn60hf5sTtn9cXwO//d+DwgZtpL6I4ddoozvjt0I1CC4JhxOZTHhfeHcIZLzSvZE7103q5Kxpe2xcMSxDmcLzi78ZU40+Hbpf/PRmk4Kj6egvt8xf/X+HpIWjlR43GkGsonLXcrzbO3FLaYPpVfuoDFtMVJEoZakeloMYyviCcoAgD/RRtWEMh9xQrePM8wC83XmUZIMH6Op895xc43ZqtvcKqwrJP1Fx2497msnIo5mS04NuGg/2WiYn3m6jQ4HimClFVCTFXnNkJROrpS4alQNK4MB+bScem2zARZPYn+hlDZsinIrtakegfW93X/6DImQ1r24Qh21q6qW420Q9MQmHi/YxnHc65ZiowANBCOrw0AeUKJvrLSUcufpF8XWPgk1OWCOGxe8rLVWCvfqyHutONTbeHFuN8nk=
 script: npm test
-after_script: chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+after_script:
+  - chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
+  - codeclimate < ./coverage/lcov.info
