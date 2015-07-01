@@ -1,7 +1,9 @@
 language: node_js
 node_js:
-- iojs
+  - iojs
 sudo: false
 env:
   global:
   - secure: CEL0O+VzeaDdAsxkmA09mzrCz1c7KNVob2H28tJO1/K7MPKad/50lBqf+rOEOpM5/JbObLGcRGDWuACzyxYLViGt8fOgSzeUdpHunSggwBxt6rteeWUWZJEWJdZUTzHR+UlZ6OvZapHm+nXqW9+QI0EleFJZgU+Q882odZnxq6QSp31Uhouu26H+AaxN7Rzd9HJS7ywkBro50euz56WgK4XzGyHWh4y6D2zETP/m1OKjoGLYqHte53TgSJXk8+jbMVkGGl3QuEb1yV8Xr8YzIwqbYOZ9WPLu7QDhTLTDVzVAMX5eRN+XIXBTDDsHKlduuu0wUhduc1a0rEyyh+Od2eo2o72Xd51o1VbiH4dF6A2C6AuN58wk4KGScGnvidv+GeNdovdfpKl+/lA59EgPiKwkESrsRru+AvObDotV+of2fdqEx+lnOrLAHyXNSsexCaWnz3Xhuj1kxu9LK6ICv3zzoVRdQTuMteH0vbQ3GZWajehmt2c5yCSUciDYkyayzUG2EyeZzovydLOuSbyJGr2K7zxOWTytCIaoKa+BX4c2vUIi4yrPpTeo9fMwG5K5dLJICIQcWlkAJliQ8465nWNqzGIL8HpUvJZCKNL8dpo+vZ5zmxRFmI+J0IbzcK6xAbjSLtDzMjk5M+7cZLcK1YAqmtAtFoZ1qNGwUUnZSfw=
+script: npm test
+after_script: chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
