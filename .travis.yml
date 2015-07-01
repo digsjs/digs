@@ -8,5 +8,5 @@ env:
   - secure: khB+PsskX8ZaK1yKdYLoNFwKAUgt6cCQvNR6510aMP2RTfw2iXmtzNNoPhxNeCaapJqAnkt/Ex/K7iNJH8fV5G9SFlYQa/eISzXJg3sLtdqRIMDfVTiw/drPP93xZAPD+1ylVIKD4ZoaMwlRKphidk1hkP2CU5wqmvs+JVqcn+xsWHs6dkj7e9jvi49j8M1+RiBcZaGj1xiMlidqD2koStOFw7w9yld5e1A/g96xxBxzyTZl7s3Ki49hY8bjxWrabwBbYENdn60hf5sTtn9cXwO//d+DwgZtpL6I4ddoozvjt0I1CC4JhxOZTHhfeHcIZLzSvZE7103q5Kxpe2xcMSxDmcLzi78ZU40+Hbpf/PRmk4Kj6egvt8xf/X+HpIWjlR43GkGsonLXcrzbO3FLaYPpVfuoDFtMVJEoZakeloMYyviCcoAgD/RRtWEMh9xQrePM8wC83XmUZIMH6Op895xc43ZqtvcKqwrJP1Fx2497msnIo5mS04NuGg/2WiYn3m6jQ4HimClFVCTFXnNkJROrpS4alQNK4MB+bScem2zARZPYn+hlDZsinIrtakegfW93X/6DImQ1r24Qh21q6qW420Q9MQmHi/YxnHc65ZiowANBCOrw0AeUKJvrLSUcufpF8XWPgk1OWCOGxe8rLVWCvfqyHutONTbeHFuN8nk=
 script: npm test
 after_script:
-  - chmod +x ./bin/codacy-coverage.js && cat ./coverage/lcov.info | node ./bin/codacy-coverage.js
-  - chmod +x ./bin/codeclimate && node ./bin/codeclimate < ./coverage/lcov.info
+  - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+  - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate
