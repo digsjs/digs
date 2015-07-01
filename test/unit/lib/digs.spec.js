@@ -63,12 +63,6 @@ describe('Digs', function () {
       expect(d._ascoltatore).to.be.null;
     });
 
-    it('should create a Promise for when the instance is ready', function () {
-      let d = new Digs();
-      expect(d._ready).to.be.instanceof(Promise);
-      expect(d._ready.isFulfilled()).to.be.false;
-    });
-
     it('should autostart if autoStart option passed', function () {
       sandbox.stub(Digs.prototype, 'start');
       let d = new Digs({ autoStart: true });
@@ -191,7 +185,8 @@ describe('Digs', function () {
     it('should complain on collision error', function () {
       d.foo = 'bar';
       sandbox.spy(d, 'collisionError');
-      return expect(d.loadPlugins()).to.be.rejectedWith(Error)
+      return expect(d.loadPlugins()).to.be
+        .rejectedWith(`Error: ${d}: Conflicting plugin name(s): "foo"`)
         .then(function () {
           expect(d.collisionError).to.have.been.calledOnce;
         });
