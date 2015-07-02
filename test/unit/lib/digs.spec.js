@@ -70,201 +70,206 @@ describe('Digs', function () {
     });
   });
 
-  describe('start()', function () {
-
-    it('should init the broker', function () {
-      let d = new Digs();
-      sandbox.stub(d, '_initBroker');
-      return d.start()
-        .then(function () {
-          expect(d._initBroker).to.have.been.calledOnce;
-        });
-    });
-
-    it('should autodetect external plugins', function () {
-      let d = new Digs({ autoDetectPlugins: true });
-      sandbox.stub(d, '_initBroker');
-      sandbox.stub(d, '_detect');
-      return d.start()
-        .then(function () {
-          expect(d._detect).to.have.been.calledOnce;
-        });
-    });
-
-    it('should load external plugins', function () {
-      let d = new Digs();
-      sandbox.stub(d, '_initBroker');
-      sandbox.stub(d, 'loadPlugins').returns(Promise.resolve([]));
-      return d.start()
-        .then(function () {
-          expect(d.loadPlugins).to.have.been.calledOnce;
-        });
-    });
-  });
-
-  describe('_initBroker()', function () {
-
-    let digsMqttBroker = require('digs-mqtt-broker');
+  describe('prototype', function () {
     let d;
-    let instance = {};
 
     beforeEach(function () {
       d = new Digs();
-      sandbox.stub(d, 'use');
-      sandbox.stub(d, 'loadPlugins')
-        .returns(Promise.resolve([{ instance: instance }]));
     });
 
-    it('should use the DigsMQTTBroker by default', function () {
-      return expect(d._initBroker()).to.eventually.eql([
-        {
-          instance: instance
-        }
-      ])
-        .then(function () {
-          expect(d.use).to.have.been.calledWith(digsMqttBroker, {
-            host: 'localhost',
-            port: 1883
+    describe('start()', function () {
+
+      it('should init the broker', function () {
+        sandbox.stub(d, '_initBroker');
+        return d.start()
+          .then(function () {
+            expect(d._initBroker).to.have.been.calledOnce;
           });
-          expect(d.loadPlugins).to.have.been.calledWith(d, d._graph,
-            'digs-mqtt-broker');
-        });
+      });
+
+      it('should autodetect external plugins', function () {
+        d._opts.autoDetectPlugins = true;
+        sandbox.stub(d, '_initBroker');
+        sandbox.stub(d, '_detect');
+        return d.start()
+          .then(function () {
+            expect(d._detect).to.have.been.calledOnce;
+          });
+      });
+
+      it('should load external plugins', function () {
+        sandbox.stub(d, '_initBroker');
+        sandbox.stub(d, 'loadPlugins').returns(Promise.resolve([]));
+        return d.start()
+          .then(function () {
+            expect(d.loadPlugins).to.have.been.calledOnce;
+          });
+      });
     });
-  });
 
-  describe('loadPlugins()', function () {
-    let d;
-    let unloadedPlugins;
-    let loadedPlugins;
-    let Plugins = require('../../../lib/plugins');
-    let EventEmitter = require('events').EventEmitter;
+    describe('_initBroker()', function () {
 
-    beforeEach(function () {
-      function pluginFunc() {
+      let digsMqttBroker = require('digs-mqtt-broker');
+      let instance = {};
+
+      beforeEach(function () {
+        sandbox.stub(d, 'use');
+        sandbox.stub(d, 'loadPlugins')
+          .returns(Promise.resolve([{ instance: instance }]));
+      });
+
+      it('should use the DigsMQTTBroker by default', function () {
+        return expect(d._initBroker()).to.eventually.eql([
+          {
+            instance: instance
+          }
+        ])
+          .then(function () {
+            expect(d.use).to.have.been.calledWith(digsMqttBroker, {
+              host: 'localhost',
+              port: 1883
+            });
+            expect(d.loadPlugins).to.have.been.calledWith('digs-mqtt-broker');
+          });
+      });
+    });
+
+    describe('loadPlugins()', function () {
+      let unloadedPlugins;
+      let loadedPlugins;
+      let Plugins = require('../../../lib/plugins');
+      let EventEmitter = require('events').EventEmitter;
+
+      beforeEach(function () {
+        function pluginFunc() {
+        }
+
+        pluginFunc.metadata = {};
+        unloadedPlugins = {
+          foo: {
+            func: pluginFunc,
+            opts: {}
+          }
+        };
+        loadedPlugins = _.map(unloadedPlugins, function (plugin, name) {
+          return {
+            name: name,
+            instance: {},
+            metadata: pluginFunc.metadata,
+            domain: new EventEmitter()
+          };
+        });
+        d._unloadedPlugins = unloadedPlugins;
+        sandbox.stub(Plugins, 'load')
+          .returns(Promise.resolve(loadedPlugins));
+      });
+
+      it('should load the unloaded plugins', function () {
+        return expect(d.loadPlugins()).to.eventually.eql(loadedPlugins);
+      });
+
+      it('should zap the unloaded plugin map', function () {
+        return d.loadPlugins()
+          .then(function () {
+            expect(d._unloadedPlugins).to.eql({});
+          });
+      });
+
+      it('should publish its name on digs itself', function () {
+        return d.loadPlugins()
+          .then(function () {
+            expect(d.foo).to.equal(_.first(loadedPlugins).instance);
+          });
+      });
+
+      it('should complain on collision error', function () {
+        d.foo = 'bar';
+        sandbox.spy(d, 'collisionError');
+        return expect(d.loadPlugins()).to.be
+          .rejectedWith(`Error: ${d}: Conflicting plugin name(s): "foo"`)
+          .then(function () {
+            expect(d.collisionError).to.have.been.calledOnce;
+          });
+      });
+    });
+
+
+    describe('use()', function () {
+
+      function foo() {
       }
 
-      pluginFunc.metadata = {};
-      unloadedPlugins = {
-        foo: {
-          func: pluginFunc,
-          opts: {}
-        }
+      foo.metadata = {
+        name: 'foo'
       };
-      loadedPlugins = _.map(unloadedPlugins, function (plugin, name) {
-        return {
-          name: name,
-          instance: {},
-          metadata: pluginFunc.metadata,
-          domain: new EventEmitter()
-        };
+      function bar() {
+      }
+
+      bar.metadata = {
+        name: 'bar',
+        dependencies: 'foo'
+      };
+
+      beforeEach(function () {
+        sandbox.stub(d._graph, 'addNode');
+        sandbox.stub(d._graph, 'addDependency');
       });
-      d = new Digs();
-      d._unloadedPlugins = unloadedPlugins;
-      sandbox.stub(Plugins, 'load')
-        .returns(Promise.resolve(loadedPlugins));
-    });
 
-    it('should load the unloaded plugins', function () {
-      return expect(d.loadPlugins()).to.eventually.eql(loadedPlugins);
-    });
+      it('should call itself recursively if passed an array', function () {
+        sandbox.spy(d, 'use');
+        d.use([
+          foo,
+          bar
+        ]);
+        expect(d.use).to.have.been.calledThrice;
+      });
 
-    it('should zap the unloaded plugin map', function () {
-      return d.loadPlugins()
-        .then(function () {
-          expect(d._unloadedPlugins).to.eql({});
-        });
-    });
+      it('should use global opts if passed an array', function () {
+        sandbox.spy(d, 'use');
+        let opts = d._opts.pluginOptions;
+        opts.foo = 'bar';
+        opts.bar = 'baz';
+        d.use([
+          foo,
+          bar
+        ]);
+        expect(d.use).to.have.been.calledWithExactly([foo, bar]);
+        expect(d.use).to.have.been.calledWithExactly(foo, opts.foo);
+        expect(d.use).to.have.been.calledWithExactly(bar, opts.bar);
+      });
 
-    it('should publish its name on digs itself', function () {
-      return d.loadPlugins()
-        .then(function () {
-          expect(d.foo).to.equal(_.first(loadedPlugins).instance);
-        });
-    });
+      it('should throw if name collision', function () {
+        d.foo = 'bar';
+        expect(function () {
+          d.use(foo);
+        }).to.throw;
+      });
 
-    it('should complain on collision error', function () {
-      d.foo = 'bar';
-      sandbox.spy(d, 'collisionError');
-      return expect(d.loadPlugins()).to.be
-        .rejectedWith(`Error: ${d}: Conflicting plugin name(s): "foo"`)
-        .then(function () {
-          expect(d.collisionError).to.have.been.calledOnce;
-        });
-    });
-  });
-
-
-  describe('use()', function () {
-    let d;
-
-    function foo() {
-    }
-
-    foo.metadata = {
-      name: 'foo'
-    };
-    function bar() {
-    }
-
-    bar.metadata = {
-      name: 'bar',
-      dependencies: 'foo'
-    };
-
-    beforeEach(function () {
-      d = new Digs();
-      sandbox.stub(d._graph, 'addNode');
-      sandbox.stub(d._graph, 'addDependency');
-    });
-
-    it('should call itself recursively if passed an array', function () {
-      sandbox.spy(d, 'use');
-      d.use([
-        foo,
-        bar
-      ]);
-      expect(d.use).to.have.been.calledThrice;
-    });
-
-    it('should use global opts if passed an array', function () {
-      sandbox.spy(d, 'use');
-      let opts = d._opts.pluginOptions;
-      opts.foo = 'bar';
-      opts.bar = 'baz';
-      d.use([
-        foo,
-        bar
-      ]);
-      expect(d.use).to.have.been.calledWithExactly([foo, bar]);
-      expect(d.use).to.have.been.calledWithExactly(foo, opts.foo);
-      expect(d.use).to.have.been.calledWithExactly(bar, opts.bar);
-    });
-
-    it('should throw if name collision', function () {
-      d.foo = 'bar';
-      expect(function () {
+      it('should add the plugin to the unloaded plugins list', function () {
         d.use(foo);
-      }).to.throw;
-    });
+        expect(d._unloadedPlugins.foo).to.eql({
+          func: foo,
+          opts: {}
+        });
+      });
 
-    it('should add the plugin to the unloaded plugins list', function () {
-      d.use(foo);
-      expect(d._unloadedPlugins.foo).to.eql({
-        func: foo,
-        opts: {}
+      it('should add a graph node for each plugin', function () {
+        d.use([foo, bar]);
+        expect(d._graph.addNode).to.have.been.calledWithExactly('foo');
+        expect(d._graph.addNode).to.have.been.calledWithExactly('bar');
+      });
+
+      it('should add a dependency if dependencies present', function () {
+        d.use([foo, bar]);
+        expect(d._graph.addDependency).to.have.been.calledWithExactly('bar',
+          'foo');
       });
     });
 
-    it('should add a graph node for each plugin', function () {
-      d.use([foo, bar]);
-      expect(d._graph.addNode).to.have.been.calledWithExactly('foo');
-      expect(d._graph.addNode).to.have.been.calledWithExactly('bar');
+    describe('isReady()', function () {
+
     });
 
-    it('should add a dependency if dependencies present', function () {
-      d.use([foo, bar]);
-      expect(d._graph.addDependency).to.have.been.calledWithExactly('bar',
-        'foo');
-    });
   });
+
 });
