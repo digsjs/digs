@@ -9,4 +9,4 @@ env:
 script: npm test
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage
-  - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate
+  - cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter
