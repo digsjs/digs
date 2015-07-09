@@ -28,7 +28,6 @@ describe('Digs', function () {
       let d = new Digs();
       expect(d._opts).to.eql({
         autoDetectPlugins: false,
-        autoStart: false,
         broker: {
           json: false,
           type: 'digs-mqtt-broker',
@@ -63,12 +62,6 @@ describe('Digs', function () {
     it('should create a placeholder for a client', function () {
       let d = new Digs();
       expect(d._client).to.be.null;
-    });
-
-    it('should autostart if autoStart option passed', function () {
-      sandbox.stub(Digs.prototype, 'start');
-      let d = new Digs({ autoStart: true });
-      expect(d.start).to.have.been.calledOnce;
     });
 
     it('should create a placeholder for the "ready" promise', function () {
