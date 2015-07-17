@@ -2,11 +2,12 @@
   "name": "digs",
   "version": "0.2.0-3",
   "dependencies": {
-    "ascoltatori": "^0.21.1",
+    "ascoltatori": "^1.0.1",
     "bluebird": "^2.9.30",
     "debug": "^2.2.0",
     "dependency-graph": "^0.2.0",
     "digs-common": "^0.2.0",
+    "digs-dev": "^0.2.2-4",
     "digs-mqtt-broker": "^0.1.3",
     "findup": "^0.1.5",
     "joi": "^6.2.0",
@@ -39,16 +40,37 @@
     "type": "git",
     "url": "https://github.com/digsjs/digs.git"
   },
-  "devDependencies": {
-    "digs-dev": "^0.2.2-3"
-  },
-  "main": "index.js",
+  "main": "lib/digs.js",
   "license": "MIT",
   "engines": {
     "node": ">=2.0.1"
   },
   "scripts": {
-    "prepublish": "digs-dev symlink",
+    "prepublish": "digs-dev install",
     "test": "grunt test"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "codacy-coverage": "^1.1.2",
+    "codeclimate-test-reporter": "^0.1.0",
+    "digs-dev": "^0.2.2-4",
+    "eslint": "^0.24.0",
+    "grunt": "^0.4.5",
+    "grunt-bump": "^0.3.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-concurrent": "^2.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-dev-update": "^1.3.0",
+    "grunt-eslint": "^16.0.0",
+    "grunt-mocha-istanbul": "^2.4.0",
+    "istanbul-harmony": "^0.3.16",
+    "jit-grunt": "^0.9.1",
+    "load-grunt-config": "^0.17.1",
+    "mocha": "^2.2.5",
+    "rewire": "^2.3.4",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.8.0",
+    "time-grunt": "^1.2.1"
   }
 }
