@@ -4,7 +4,6 @@ let rewire = require('rewire');
 let Digs = rewire('../../../lib');
 let CoAPServer = require('coap').createServer;
 let Promise = require('bluebird');
-let path = require('path');
 let _ = require('lodash');
 
 describe('Digs', function() {
