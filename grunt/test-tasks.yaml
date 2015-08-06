@@ -19,10 +19,12 @@ mocha_istanbul:
     coverage: false
 
 eslint:
-  - <%= watch.test.files %>
-  - '!**/*.yaml'
-  - '!Gruntfile.js'
-  - '!grunt/testfile.js'
-  - '!grunt/digs-dev.js'
-  - '!test/fixture.js'
+  src:
+    - <%= watch.test.files %>
+    - '!**/*.yaml'
+    - '!Gruntfile.js'
+    - '!grunt/testfile.js'
+    - '!grunt/digs-dev.js'
+    - '!test/fixture.js'
+    configFile: .eslintrc
 
