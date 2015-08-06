@@ -46,7 +46,7 @@
     "chai-as-promised": "^5.1.0",
     "codacy-coverage": "^1.1.2",
     "codeclimate-test-reporter": "^0.1.0",
-    "digs-dev": "^0.2.2-6",
+    "digs-dev": "digsjs/digs-dev#master",
     "eslint": "^1.0.0",
     "grunt": "^0.4.5",
     "grunt-bump": "^0.3.1",
