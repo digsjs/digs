@@ -23,5 +23,6 @@ eslint:
   - '!**/*.yaml'
   - '!Gruntfile.js'
   - '!grunt/testfile.js'
+  - '!grunt/digs-dev.js'
   - '!test/fixture.js'
 
