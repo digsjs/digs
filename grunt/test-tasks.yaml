@@ -26,5 +26,6 @@ eslint:
     - '!grunt/testfile.js'
     - '!grunt/digs-dev.js'
     - '!test/fixture.js'
+  options:
     configFile: .eslintrc
 
