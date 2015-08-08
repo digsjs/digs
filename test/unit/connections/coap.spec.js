@@ -9,7 +9,11 @@ describe('connections/coap', function() {
   beforeEach(function() {
     sandbox = sinon.sandbox.create('connections/coap');
     digs = {
-      log: sandbox.stub()
+      log: sandbox.stub(),
+      select: sandbox.spy(function() {
+        return this;
+      }),
+      inject: sandbox.stub().callsArgWith(1, {})
     };
   });
 
@@ -30,9 +34,12 @@ describe('connections/coap', function() {
     beforeEach(function() {
       sandbox.stub(nodeCoap.createServer.prototype, 'listen').callsArg(0);
       req = {
-        path: '/some/path'
+        url: '/some/path'
       };
-      res = {};
+      res = {
+        setOption: sandbox.stub(),
+        end: sandbox.stub()
+      };
     });
 
     it('should create a CoAPServer', function() {
@@ -91,13 +98,11 @@ describe('connections/coap', function() {
         sandbox.spy(nodeCoap, 'createServer');
       });
 
-      it('should emit a "request" event to the TCP server', function() {
+      it('should inject a request to the proxy', function() {
         let tcpServer = createProxy(digs);
         let coapServer = getCoAPServer();
         coapServer.emit('request', req, res);
-        expect(tcpServer.emit).to.have.been.calledWithExactly('request',
-          req,
-          res);
+        expect(digs.inject).to.have.been.calledOnce;
       });
 
       it('should log something', function() {
@@ -140,10 +145,16 @@ describe('connections/coap', function() {
     });
 
     it('should return a Hapi connection configuration object', function() {
-      expect(coap()).to.eql({
+      expect(coap(digs, {
+        coap: {
+          port: 1234,
+          address: 'localhost'
+        }
+      })).to.eql({
         listener: {},
         port: '/some/path',
-        labels: ['coap']
+        labels: ['coap'],
+        uri: 'coap://localhost:1234'
       });
     });
   });
