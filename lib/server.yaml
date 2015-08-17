@@ -1,0 +1,35 @@
+server:
+  app:
+    namespace: digs
+    project: home
+  connections:
+    router:
+      stripTrailingSlash: true
+    app:
+      coap:
+        port: 5683
+        host: localhost
+plugins:
+  -
+    good:
+      reporters:
+        -
+          reporter: good-console
+          events:
+            log: '*'
+            response: '*'
+            request: '*'
+            error: '*'
+          config:
+            utc: false
+            format: D MMM HH:mm:ss
+  -
+    blipp: {}
+  -
+    ./index: {}
+
+connections:
+  -
+    port: 9090
+    labels:
+      - http
