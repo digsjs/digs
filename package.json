@@ -5,7 +5,9 @@
     "blipp": "^2.2.1",
     "bluebird": "^2.9.30",
     "boom": "^2.8.0",
+    "chalk": "^1.1.0",
     "coap": "^0.12.0",
+    "digs-utils": "^0.2.2-5",
     "glue": "^2.1.1",
     "good": "^6.3.0",
     "good-console": "^5.0.2",
@@ -13,6 +15,7 @@
     "hapi-coap-listener": "^0.1.0",
     "joi": "^6.2.0",
     "lodash": "^3.9.3",
+    "stampit": "^2.1.0",
     "yaml-js": "^0.1.1",
     "yargs": "^3.19.0"
   },
@@ -67,7 +70,7 @@
     "rewire": "^2.3.4",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.8.0",
-    "time-grunt": "^1.2.1"
+    "time-grunt": "^1.2.1",
   },
   "peerDependencies": {
     "hapi": "*"
