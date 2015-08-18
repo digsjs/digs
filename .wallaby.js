@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function() {
+module.exports = function wallabyConfig() {
   return {
     files: [
       'lib/**/*.js'
@@ -12,7 +12,7 @@ module.exports = function() {
       type: 'node'
     },
     testFramework: 'mocha',
-    bootstrap: function(wallaby) {
+    bootstrap: function bootstrap(wallaby) {
       var path = require('path');
       require(path.join(wallaby.localProjectDir, 'test', 'fixture'));
     }
