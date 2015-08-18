@@ -14,7 +14,7 @@ watch:
     - test
 
 mocha_istanbul:
-  src: test
+  src: test/**/*.spec.js
   options:
     coverage: false
 
@@ -26,6 +26,4 @@ eslint:
     - '!grunt/testfile.js'
     - '!grunt/digs-dev.js'
     - '!test/fixture.js'
-  options:
-    configFile: .eslintrc
 
