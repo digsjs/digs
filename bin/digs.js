@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint no-sync:0 */
+
 'use strict';
 
 let Digs = require('../lib');

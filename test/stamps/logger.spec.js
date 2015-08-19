@@ -70,10 +70,9 @@ describe('DigsLogger', function() {
     it('should insert default tags', function() {
       dl.log('foo');
       expect(dl.digs.log).to.have.been.calledWithExactly([
-          dl.namespace,
-          dl.project
-        ],
-        'foo');
+        dl.namespace,
+        dl.project
+      ], 'foo');
     });
 
     it('should append any other tags to the list of tags', function() {
@@ -86,7 +85,13 @@ describe('DigsLogger', function() {
     });
 
     describe('convenience methods', function() {
-      _.each(['debug', 'ok', 'error', 'info', 'warn'], function(methodName) {
+      _.each([
+        'debug',
+        'ok',
+        'error',
+        'info',
+        'warn'
+      ], function(methodName) {
         it(`should add "${methodName}" to the list of tags`, function() {
           dl[methodName]('foo');
           expect(dl.digs.log).to.have.been.calledWithExactly([
