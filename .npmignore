@@ -1,10 +1,5 @@
 .*
-example/
-eg/
-demo/
 test/
-spec/
 docs/
-dist/
 Gruntfile.js
 grunt/
