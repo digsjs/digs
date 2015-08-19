@@ -2,13 +2,12 @@ languages:
   JavaScript: true
 exclude_paths:
   - Gruntfile.js
-  - grunt/testfile.js
   - test/fixture.js
 engines:
   eslint:
     enabled: true
 paths:
-  - index.js
   - test/**/*.js
   - lib/**/*.js
+  - bin/**/*.js
 
