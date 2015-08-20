@@ -1,3 +1,5 @@
+<img src="https://cldup.com/f5WjaiE4J3.png" alt="digs logo"/>
+
 # digs
 
 A home automation server written in JavaScript
