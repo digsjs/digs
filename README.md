@@ -1,4 +1,4 @@
-<img src="https://cldup.com/f5WjaiE4J3.png" alt="digs logo"/>
+<img src="https://cldup.com/UJpO9KlF0x.png" alt="digs logo"/>
 
 # digs
 
