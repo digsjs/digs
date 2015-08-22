@@ -8,10 +8,6 @@ let Digs = require('../lib');
 let yaml = require('yaml-js');
 let yargs = require('yargs');
 let fs = require('graceful-fs');
-let path = require('path');
-let _ = require('lodash');
-
-const SERVER_CONFIG = path.join(__dirname, '..', 'lib', 'server.yaml');
 
 let argv = yargs
   .option('config', {
@@ -22,19 +18,14 @@ let argv = yargs
   .argv;
 
 let config;
-try {
-  config = yaml.load(fs.readFileSync(SERVER_CONFIG));
-} catch (e) {
-  throw new Error('Unable to parse digs.yaml');
-}
 
 let configPath = argv.config;
 if (configPath) {
   try {
     if (/\.json$/.test(configPath)) {
-      _.extend(config, JSON.parse(fs.readFileSync(configPath)));
+      config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
     } else {
-      _.extend(config, yaml.load(fs.readFileSync(configPath)));
+      config = yaml.load(fs.readFileSync(configPath, 'utf-8'));
     }
   } catch (e) {
     throw new Error(`Cannot read or parse file at "${configPath}"`);
