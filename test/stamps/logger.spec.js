@@ -1,6 +1,6 @@
 'use strict';
 
-describe('DigsLogger', function() {
+describe('stamps.DigsLogger', function() {
   const Server = require('hapi').Server;
   const DigsLogger = require('../../lib/stamps/logger');
   const _ = require('digs-utils');

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('DigsObject', function() {
+describe('stamps.DigsObject', function() {
   const Server = require('hapi').Server;
   const DigsObject = require('../../lib/stamps/object');
 
