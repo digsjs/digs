@@ -1,0 +1,11 @@
+digs:
+  build: .
+  links:
+    - mongo
+  ports:
+    - "9090:9090"
+    - "5683:5683"
+mongo:
+  image: mongo
+mosquitto:
+  image: toke/mosquitto
