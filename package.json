@@ -1,6 +1,6 @@
 {
   "name": "digs",
-  "version": "0.2.0-4",
+  "version": "0.2.0-5",
   "dependencies": {
     "blipp": "^2.2.1",
     "bluebird": "^2.9.30",
