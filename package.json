@@ -6,7 +6,7 @@
     "boom": "^2.8.0",
     "chalk": "^1.1.0",
     "coap": "^0.12.0",
-    "digs-utils": "^0.2.2-5",
+    "digs-utils": "devel",
     "glue": "^2.2.0",
     "good": "^6.3.0",
     "good-console": "^5.0.3",
