@@ -3,14 +3,12 @@
 describe('stamps.DigsObject', function() {
   const Server = require('hapi').Server;
   const DigsObject = require('../../lib/stamps/object');
-
   const SERVER_CFG = {
     app: {
       namespace: 'digs',
       project: 'home'
     }
   };
-
   let sandbox;
   let digs;
 
@@ -31,7 +29,7 @@ describe('stamps.DigsObject', function() {
     expect(DigsObject).to.throw(Error);
   });
 
-  it('should throw if not passed a "digs" property and value with ' +
+  it('should throw if not passed a "digs" param and value with ' +
     '"namespace" and "project" app settings',
     function() {
       expect(function() {
@@ -39,28 +37,28 @@ describe('stamps.DigsObject', function() {
       }).to.throw(Error);
     });
 
-  it('should not throw if passed a "digs" property and value with ' +
+  it('should not throw if passed a "digs" param and value with ' +
     '"namespace" and "project" app settings', function() {
     expect(function() {
-      DigsObject({digs: digs});
+      DigsObject({}, digs);
     }).not.to.throw();
   });
 
   it('should use an EventEmitter', function() {
-    expect(DigsObject({digs: digs}).on).to.be.a('function');
-    expect(DigsObject({digs: digs}).emit).to.be.a('function');
+    expect(DigsObject({}, digs).on).to.be.a('function');
+    expect(DigsObject({}, digs).emit).to.be.a('function');
   });
 
   it('should have a "namespace" property', function() {
-    expect(DigsObject({digs: digs}).namespace).to
+    expect(DigsObject({}, digs).namespace).to
       .equal(SERVER_CFG.app.namespace);
   });
 
   it('should have a "project" property', function() {
-    expect(DigsObject({digs: digs}).project).to.equal(SERVER_CFG.app.project);
+    expect(DigsObject({}, digs).project).to.equal(SERVER_CFG.app.project);
   });
 
   it('should have a digs property', function() {
-    expect(DigsObject({digs: digs}).digs).to.equal(digs);
+    expect(DigsObject({}, digs).digs).to.equal(digs);
   });
 });

@@ -33,15 +33,15 @@ describe('stamps.DigsLogger', function() {
 
   it('should use DigsObject', function() {
     expect(DigsLogger).to.throw();
-    expect(DigsLogger({digs: digs})).not.to.throw;
+    expect(DigsLogger({}, digs)).not.to.throw;
   });
 
   it('should have a log() function', function() {
-    expect(DigsLogger({digs: digs}).log).to.be.a('function');
+    expect(DigsLogger({}, digs).log).to.be.a('function');
   });
 
   it('should have convenience logging methods', function() {
-    const dl = DigsLogger({digs: digs});
+    const dl = DigsLogger({}, digs);
     expect(dl.debug).to.be.a('function');
     expect(dl.ok).to.be.a('function');
     expect(dl.info).to.be.a('function');
@@ -53,7 +53,7 @@ describe('stamps.DigsLogger', function() {
     let dl;
 
     beforeEach(function() {
-      dl = DigsLogger({digs: digs});
+      dl = DigsLogger({}, digs);
       sandbox.stub(dl.digs, 'log');
     });
 
