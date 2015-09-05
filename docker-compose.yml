@@ -2,10 +2,19 @@ digs:
   build: .
   links:
     - mongo
+    - mosquitto
   ports:
     - "9090:9090"
     - "5683:5683"
 mongo:
   image: mongo
+  expose:
+    - 3000
+  volumes:
+    - ./logs/:/var/log/mongodb/
+    - ./mongodb/db:/data/db
+  command: --smallfiles
 mosquitto:
   image: toke/mosquitto
+  expose:
+    - 1883
