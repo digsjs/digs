@@ -51,7 +51,7 @@ If this sounds good to you, I'm hoping you can lend a hand.  *I am but a man.*  
 
 ## Installation
 
-[Hapi](http://hapijs.com) <= 9.0.0 is a peer depdency of this package, so:
+[Hapi](http://hapijs.com) (>= 8.0.0 < 9.0.0) is a peer depdency of this package, so:
 
 ```sh
 $ npm install digs hapi
@@ -73,8 +73,6 @@ See [CONTRIBUTING.md](https://github.com/digsjs/digs/blob/master/CONTRIBUTING.md
 - [digs-messenger](https://www.npmjs.com/package/digs-messenger) - Messaging protocol plugin
 - [digs-mqtt-broker](https://www.npmjs.com/package/digs-mqtt-broker) - Flimsy MQTT broker if you don't have a proper one
 - [docker-digs](https://hub.docker.com/r/digsjs/digs/) - Docker image for Digs
-
-See the GitHub [digsjs organization](https://github.com/digsjs) for the list.
 
 ## Roadmap
 
