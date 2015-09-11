@@ -1,0 +1,42 @@
+[
+  {
+    "name": "admin",
+    "color": "5319e7"
+  },
+  {
+    "name": "bug",
+    "color": "fc2929"
+  },
+  {
+    "name": "chore",
+    "color": "676BFB"
+  },
+  {
+    "name": "documentation",
+    "color": "006b75"
+  },
+  {
+    "name": "duplicate",
+    "color": "333333"
+  },
+  {
+    "name": "enhancement",
+    "color": "009800"
+  },
+  {
+    "name": "future",
+    "color": "207de5"
+  },
+  {
+    "name": "help wanted",
+    "color": "FF9324"
+  },
+  {
+    "name": "quality",
+    "color": "fbca04"
+  },
+  {
+    "name": "wontfix",
+    "color": "666666"
+  }
+]
