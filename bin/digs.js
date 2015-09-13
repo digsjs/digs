@@ -7,9 +7,23 @@
 let Digs = require('../lib');
 let yaml = require('yaml-js');
 let yargs = require('yargs');
-let fs = require('graceful-fs');
+let common = require('digs-common');
+let fs = common.fs;
+let Promise = common.Promise;
 
-let argv = yargs
+function parseConfig(filepath) {
+  if (!filepath) {
+    return Promise.resolve();
+  }
+  return fs.readFileAsync(filepath, 'utf8')
+    .done(function success(file) {
+      return /\.json$/.test(filepath) ? JSON.parse(file) : yaml.load(file);
+    }, function fail() {
+      throw new Error(`Cannot read or parse file at "${filepath}"`);
+    });
+}
+
+const argv = yargs
   .option('config', {
     alias: 'c',
     describe: 'Config manifest file (JSON/YAML)',
@@ -17,19 +31,8 @@ let argv = yargs
   })
   .argv;
 
-let config;
+parseConfig(argv.config)
+  .then(function createServer(config) {
+    Digs.createServer(config);
+  });
 
-let configPath = argv.config;
-if (configPath) {
-  try {
-    if (/\.json$/.test(configPath)) {
-      config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-    } else {
-      config = yaml.load(fs.readFileSync(configPath, 'utf-8'));
-    }
-  } catch (e) {
-    throw new Error(`Cannot read or parse file at "${configPath}"`);
-  }
-}
-
-Digs.createServer(config);
