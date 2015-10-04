@@ -29,7 +29,8 @@
   ],
   "author": {
     "email": "boneskull@boneskull.com",
-    "name": "Christopher Hiller"
+    "name": "Christopher Hiller",
+    "url": "https://boneskull.com"
   },
   "repository": {
     "type": "git",
