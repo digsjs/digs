@@ -27,6 +27,8 @@ plugins:
     blipp: {}
   -
     ./lib: {}
+  -
+    digs-data: {}
 
 connections:
   -
