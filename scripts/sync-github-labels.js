@@ -20,7 +20,13 @@ var github = new GitHubApi({
   }
 });
 
-console.log('Querying GitHub for projects...');
+var project = process.argv[2];
+if (project) {
+  console.log('Updating "digsjs/%s"', project);
+} else {
+  console.log('Querying GitHub for projects...');
+}
+
 
 binPath('github-labels')
   .get('labels')
@@ -40,6 +46,12 @@ binPath('github-labels')
 
     console.log('Using github-labels executable "%s"',
       path.relative(process.cwd(), executable));
+
+    if (project) {
+      process.stdout.write(format('%s...', project));
+      return update(project);
+    }
+
     return Promise.promisify(github.repos.getFromOrg)({org: 'digsjs'})
       .then(function(data) {
         var names = _.pluck(data, 'name');
