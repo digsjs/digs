@@ -1,6 +1,6 @@
 {
   "name": "digs",
-  "version": "0.2.1",
+  "version": "0.2.2-0",
   "dependencies": {
     "blipp": "^2.2.1",
     "boom": "^2.9.0",
