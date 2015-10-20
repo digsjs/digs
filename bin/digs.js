@@ -4,7 +4,7 @@
 
 'use strict';
 
-const Digs = require('../lib');
+const digs = require('../lib');
 const yaml = require('yaml-js');
 const yargs = require('yargs');
 const common = require('digs-common');
@@ -59,5 +59,5 @@ const argv = yargs
   .argv;
 
 parseConfig(argv.config)
-  .then((config) => Digs.createServer(config));
+  .then((config) => digs(config));
 

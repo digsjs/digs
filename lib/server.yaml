@@ -2,13 +2,15 @@ server:
   app:
     namespace: digs
     project: home
+    coap:
+      port: 5683
+      host: localhost
   connections:
     router:
       stripTrailingSlash: true
     app:
-      coap:
-        port: 5683
-        host: localhost
+      port: 9090
+      host: localhost
 plugins:
   -
     good:
@@ -26,7 +28,7 @@ plugins:
   -
     blipp: {}
   -
-    ./lib: {}
+    ./lib/plugin: {}
   -
     digs-data: {}
 
