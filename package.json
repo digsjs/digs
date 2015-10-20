@@ -45,7 +45,7 @@
   "scripts": {
     "prepublish": "digs-dev install",
     "test": "grunt test",
-    "sync-labels": "node scripts/sync-github-labels"
+    "sync-labels": "scripts/sync-github-labels"
   },
   "devDependencies": {
     "bin-path": "0.0.3",
