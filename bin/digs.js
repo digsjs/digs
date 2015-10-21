@@ -43,7 +43,7 @@ const argv = yargs
   })
   .option('debug', {
     boolean: true,
-    describe: 'Enable debugging output (while starting server)'
+    describe: 'Enable debugging output (until server instantiated)'
   })
   .check((args) => {
     if (args.debug) {
@@ -55,6 +55,7 @@ const argv = yargs
     } else {
       debug('No config file specified');
     }
+    return true;
   })
   .argv;
 
