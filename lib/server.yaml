@@ -11,22 +11,11 @@ server:
     app:
       port: 9090
       host: localhost
+  debug:
+    log:
+      - digs
+      - home
 plugins:
-  -
-    good:
-      reporters:
-        -
-          reporter: good-console
-          events:
-            log: '*'
-            response: '*'
-            request: '*'
-            error: '*'
-          config:
-            utc: false
-            format: D MMM HH:mm:ss
-  -
-    blipp: {}
   -
     ./lib/plugin: {}
   -
