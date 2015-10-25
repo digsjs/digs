@@ -4,17 +4,18 @@
 
 'use strict';
 
-const digs = require('../lib');
 const yaml = require('yaml-js');
 const yargs = require('yargs');
 const common = require('digs-common');
 const fs = common.fs;
 const Promise = common.Promise;
-const debug = require('debug')('digs-cli');
+const _ = common.utils;
+
+let debug;
 
 function parseConfig(filepath) {
   if (!filepath) {
-    return Promise.resolve();
+    return Promise.resolve({});
   }
   debug('Attempting to read config file...');
   return fs.readFileAsync(filepath, 'utf8')
@@ -43,11 +44,13 @@ const argv = yargs
   })
   .option('debug', {
     boolean: true,
+    'default': false,
     describe: 'Enable debugging output (until server instantiated)'
   })
   .check((args) => {
     if (args.debug) {
-      require('debug').enable('digs-*');
+      common.debug.enable('digs*');
+      debug = common.debug('digs:cli');
       debug('Debug mode enabled');
     }
     if (args.config) {
@@ -60,5 +63,10 @@ const argv = yargs
   .argv;
 
 parseConfig(argv.config)
-  .then((config) => digs(config));
+  .then((config) => {
+    if (argv.debug) {
+      _.set(config, 'server.app.debug', true);
+    }
+    return require('../lib')(config);
+  });
 

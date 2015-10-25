@@ -11,15 +11,11 @@ server:
     app:
       port: 9090
       host: localhost
-  debug:
-    log:
-      - digs
-      - home
 plugins:
   -
     ./lib/plugin: {}
   -
-    digs-data: {}
+    chairo: {}
 
 connections:
   -
