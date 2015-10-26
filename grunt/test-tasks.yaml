@@ -21,6 +21,7 @@ mocha_istanbul:
 eslint:
   src:
     - <%= watch.test.files %>
+    - 'scripts/**/*.js'
     - '!**/*.yaml'
     - '!Gruntfile.js'
     - '!grunt/testfile.js'
