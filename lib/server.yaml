@@ -14,8 +14,6 @@ server:
 plugins:
   -
     ./lib/plugin: {}
-  -
-    chairo: {}
 
 connections:
   -
