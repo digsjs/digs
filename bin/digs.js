@@ -52,6 +52,8 @@ const argv = yargs
       common.debug.enable('digs*');
       debug = common.debug('digs:cli');
       debug('Debug mode enabled');
+    } else {
+      debug = _.noop;
     }
     if (args.config) {
       debug(`Using config at path ${args.config}`);
