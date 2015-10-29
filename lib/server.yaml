@@ -8,9 +8,7 @@ server:
   connections:
     router:
       stripTrailingSlash: true
-    app:
-      port: 9090
-      host: localhost
+
 plugins:
   -
     ./lib/plugin: {}
@@ -18,5 +16,6 @@ plugins:
 connections:
   -
     port: 9090
+    host: localhost
     labels:
       - http
