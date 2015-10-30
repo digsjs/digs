@@ -1,6 +1,6 @@
 {
   "name": "digs",
-  "version": "0.2.2-4",
+  "version": "0.2.2-5",
   "dependencies": {
     "boom": "^2.9.0",
     "chalk": "^1.1.1",
