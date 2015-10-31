@@ -65,7 +65,7 @@
     "hapi": "^11.0.0",
     "istanbul": "^0.4.0",
     "jit-grunt": "^0.9.1",
-    "load-grunt-config": "^0.17.1",
+    "load-grunt-config": "^0.18.0",
     "mocha": "^2.3.2",
     "pre-commit": "^1.1.2",
     "rewire": "thesavior/rewire",
