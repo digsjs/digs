@@ -49,7 +49,7 @@
     "chai-as-promised": "^5.1.0",
     "child-process-promise": "^1.1.0",
     "codacy-coverage": "^1.1.3",
-    "codeclimate-test-reporter": "^0.1.1",
+    "codeclimate-test-reporter": "^0.2.0",
     "digs-dev": "^0.2.17",
     "eslint": "^1.8.0",
     "github": "^0.2.4",
