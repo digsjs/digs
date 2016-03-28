@@ -3,7 +3,7 @@
   "version": "0.2.2-5",
   "dependencies": {
     "boom": "^3.0.0",
-    "chalk": "^1.1.1",
+    "chalk": "^1.1.2",
     "coap": "^0.12.0",
     "digs-common": "^0.2.10",
     "glue": "^2.4.0",
