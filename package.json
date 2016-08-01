@@ -73,6 +73,6 @@
     "time-grunt": "^1.2.2"
   },
   "peerDependencies": {
-    "hapi": "^11.0.0"
+    "hapi": "^14.1.0"
   }
 }
