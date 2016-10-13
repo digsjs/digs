@@ -2,7 +2,7 @@
   "name": "digs",
   "version": "0.2.2-5",
   "dependencies": {
-    "boom": "^3.0.0",
+    "boom": "^4.2.0",
     "chalk": "^1.1.1",
     "coap": "^0.12.0",
     "digs-common": "^0.2.10",
