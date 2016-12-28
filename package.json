@@ -52,7 +52,7 @@
     "codeclimate-test-reporter": "^0.1.1",
     "digs-dev": "^0.2.17",
     "eslint": "^1.8.0",
-    "github": "^0.2.4",
+    "github": "^7.2.0",
     "github-labels": "^0.5.2",
     "grunt": "^0.4.5",
     "grunt-bump": "^0.6.0",
