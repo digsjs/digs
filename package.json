@@ -68,7 +68,7 @@
     "mocha": "^2.3.2",
     "pre-commit": "^1.1.2",
     "rewire": "github:thesavior/rewire",
-    "sinon": "^1.17.2",
+    "sinon": "^2.1.0",
     "sinon-chai": "^2.8.0",
     "time-grunt": "^1.2.2"
   },
